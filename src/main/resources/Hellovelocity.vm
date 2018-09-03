@@ -1,0 +1,19 @@
+#set( $iAmVariable = "good!" ) 
+Welcome $name to velocity.com 
+today is $date. 
+today is $dateTime. 
+#foreach ($i in $list) 
+$i 
+#end 
+$iAmVariable
+
+
+
+#set($foo = $iAmVariable) 
+#set($foo = "hello") 
+#set($foo.name = $bar.name) 
+#set($foo.name = $bar.getName($arg)) 
+# set($foo = 123) 
+#set($foo = ["foo",$bar])
+
+
