@@ -2,6 +2,7 @@ package com.application.image;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -22,7 +23,7 @@ public class DrawImageTest {
 	
 	@SuppressWarnings("restriction")
 	public static void main(String[] args) throws Exception {
-		String imagePath = "E:\\邮件签名2.png";
+		String imagePath = "C:\\Users\\liuyunpeng\\Desktop\\111.160.74.jpg";
 		
 /*		if( imagePath.contains("/") ) {
 			System.out.println("转换前："+imagePath);
@@ -66,12 +67,21 @@ public class DrawImageTest {
 
 		// 画笔颜色
 		g2d.setColor(Color.decode("#FE0202"));
+		
+		
+		Font font = new Font("微软雅黑", Font.BOLD, 32);
+        String content = "你好Java!";
+        //sun.font.FontDesignMetrics  metrics = sun.font.FontDesignMetrics.getMetrics(font);
+		
+		g2d.setFont(font);
+		//g2d.drawString(content, 0, metrics.getAscent());//图片上写文字
+		g2d.drawString(content, 215,309-10);//图片上写文字
         
         
        // (243.0,341.0),(215.0,309.0)
 
         //矩形框(原点x坐标，原点y坐标，矩形的长，矩形的宽)
-		//g2d.drawRect(215, 309, 243-215, 341-309);
+		g2d.drawRect(215, 309, 243-215, 341-309);
         
         //矩形框(原点x坐标，原点y坐标，矩形的长，矩形的宽)
         //g.drawRect(347, 440, 292, 340);
@@ -92,9 +102,9 @@ public class DrawImageTest {
         BASE64Encoder  base64Encoder = new BASE64Encoder();
         String  base64Str = base64Encoder.encode(bytes);
         
-        String imageFile = "data:image/"+"jpeg"+";base64,"+base64Str;
+       // String imageFile = "data:image/"+"jpeg"+";base64,"+base64Str;
         
-        System.out.println(imageFile);   
+        //System.out.println(imageFile);   
 	}
 	
 	

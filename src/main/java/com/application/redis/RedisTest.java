@@ -49,6 +49,7 @@ public class RedisTest {
 		jedis.sadd("myset", "3");
 		jedis.sadd("myset", "2");
 		
+		
 		System.out.println( jedis.smembers("myset") );
 		
 		// key 为 sort set类型

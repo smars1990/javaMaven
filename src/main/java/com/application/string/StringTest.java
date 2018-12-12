@@ -1,5 +1,8 @@
 package com.application.string;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+
 public class StringTest {
 	
   public static void main(String[] args) {
@@ -18,7 +21,10 @@ public class StringTest {
 	  String str = "8";
 	  
 	  System.out.println("str:"+Integer.parseInt(str));
-
-
+	  
+      LocalDateTime dateTime = LocalDateTime.now();
+      
+      System.out.println(dateTime.withHour(00));
+      
   }
 }

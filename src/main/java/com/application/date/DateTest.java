@@ -9,6 +9,7 @@ package com.application.date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -19,9 +20,14 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -47,36 +53,120 @@ public class DateTest {
 	     //System.out.println(	getDaysInTimeLimit("2018-03-09",LocalDate.now().toString()));
 		
 		 // 本地时间
-         getCurrentYearFirstDayAndLastDay();
+         //getCurrentYearFirstDayAndLastDay();
 
          //System.out.println(getNowDate());
 		 // LocalDateTime localDate = LocalDateTime.now();
 		 //System.out.println(LocalDate.now());
-		//DateFormat dateFormat = DateFormat.getTimeInstance(DateFormat.DAY_OF_WEEK_FIELD);
 		
-		//System.out.println(dateFormat.format("2018-05-29"));
+		/*
+		DateFormat dateFormat = DateFormat.getTimeInstance(DateFormat.DAY_OF_WEEK_FIELD);
+	    System.out.println(dateFormat.format("2018-05-29"));
+		System.out.println(LocalDate.parse("2018-05-29",DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        */	
 		
+		LocalDate currentMonthDate = LocalDate.of(2018, 11, 1);
+		System.out.println("currentMonthDate:"+currentMonthDate);
 		
-		//LocalDate.now();
-		
-		//System.out.println(LocalDate.parse("2018-05-29",DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 		
 		//DateTimeFormatter  dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		//System.out.print(ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.parse("2018-05-29", dateTimeFormatter)));
 		
-		LocalDate startTime = LocalDate.parse("2018-06-15");
-		LocalDate endTime = LocalDate.parse("2018-06-20");
-		LocalDate clickTime = LocalDate.parse("2018-06-15");
+//		LocalDate startTime = LocalDate.parse("2018-06-15");
+//		LocalDate endTime = LocalDate.parse("2018-06-20");
+//		LocalDate clickTime = LocalDate.parse("2018-06-15");
 		
 		/*if( startTime.isBefore(clickTime) &&  endTime.isAfter(clickTime)){
 			System.out.println("111");
 		}*/
 		
-	//	System.out.println(ChronoUnit.DAYS.between(startTime,clickTime));
-	//	System.out.println(ChronoUnit.DAYS.between(clickTime,endTime));
+//		System.out.println(ChronoUnit.DAYS.between(startTime,clickTime));
+//		System.out.println(ChronoUnit.DAYS.between(clickTime,endTime));
 		
+		
+		/*
+		
+		System.out.println(monthFirstDay +":"+monthLastDay);
+		
+		Period period = Period.between(localDate, monthLastDay);
+
+		System.out.println("相差天数："+period.getDays());
+		
+		LocalDateTime dateTime = LocalDateTime.now();
+	    System.out.println("时："+ dateTime.getHour() +"分："+dateTime.getMinute());
+ 		
+		
+		System.out.println(localDate.getYear() +"-"+localDate.getMonthValue() + "-" +localDate.getDayOfMonth());
+        */
+		
+		
+		//LocalDate date = LocalDate.now();
+		//System.out.println("当前日期："+ date);
+		//System.out.println(date.plusDays(-21));
+		
+		//LocalDateTime localDateTime = LocalDateTime.now();
+		//System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+		// 获取当前日期
+		LocalDate localDate = LocalDate.now();
+		//localDate = localDate.minusDays(1);
+		//localDate = localDate.minusDays(7);
+		System.out.println(localDate);
+		
+		// 上一周的周五
+		LocalDate weeklyFirstTime = localDate.minusWeeks(1).with(DayOfWeek.FRIDAY);
+		System.out.println(weeklyFirstTime.toString());
+		
+/*		int currentWeekDay = localDate.getDayOfWeek().getValue();
+		//WeekFields weekFields = WeekFields.of(Locale.getDefault()); 
+		WeekFields weekFields = WeekFields.ISO; 
+		int weekNumber = localDate.get(weekFields.weekOfYear());
+		
+		System.out.println("周次1："+weekNumber);
+		System.out.println("周1："+WeekFields.SUNDAY_START);
+		System.out.println("周7："+weekFields);
+		System.out.println("周几："+localDate.getDayOfWeek().getValue());*/
+		
+//    	DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//		String d1 = "2018-10-22";
+//		LocalDate date = LocalDate.parse(d1, fmt);
+//		
+//		LocalDate lastWeeklyStartTime = LocalDate.parse("2018-10-22", DateTimeFormatter.BASIC_ISO_DATE).minusWeeks(1);
+//		
+//		System.out.println("lastWeeklyStartTime:"+date);
+
+//		// 一周的第一天
+//		String weekFristDay = null;
+//		String weekFristDay1 = null;
+//		// 一周的最后一天
+//		String weekEndDay = null;
+//		if( currentWeekDay <= 3 ) {
+//			weekFristDay = localDate.with(DayOfWeek.MONDAY).minusWeeks(1).toString();
+//			weekFristDay1 = localDate.with(DayOfWeek.MONDAY).toString();
+//			weekEndDay = localDate.with(DayOfWeek.SUNDAY).toString();
+//		}
+//
+//		System.out.println(weekFristDay +":"+weekFristDay1 +":"+weekEndDay);
 	}
 	
+	/**
+	 * 获取当前月的每一天
+	 */
+	public static void getCurrentMonthDays() {
+		// 获取当前日期
+		LocalDate localDate = LocalDate.now();
+		// 获取当前月最后一天日期
+		LocalDate monthLastDay = localDate.with(TemporalAdjusters.lastDayOfMonth());
+		// 获取当前月最后一天日期
+		LocalDate monthFirstDay = localDate.with(TemporalAdjusters.firstDayOfMonth());
+		
+		System.out.println(monthLastDay.getDayOfMonth() + ":" + monthFirstDay.getDayOfMonth());
+		
+		
+		for(int i = 0; i < monthLastDay.getDayOfMonth(); i++ ) {
+			System.out.println(monthFirstDay.plusDays(i));
+		}
+	}
 	
 	/**
 	 * 获取当前时间所在的小时

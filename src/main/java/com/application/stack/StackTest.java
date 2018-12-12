@@ -4,7 +4,7 @@
  * 
  * 
  */
-package com.application.stream;
+package com.application.stack;
 
 import java.util.Arrays;
 import java.util.Stack;
@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  * @author $Author: liuyunpeng $
  * @version $Revision: 1.0 $
  */
-public class StreamTest {
+public class StackTest {
 
 	public static void main(String[] args) {
 
