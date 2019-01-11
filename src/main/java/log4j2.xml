@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" monitorInterval="300">
+    <!--先定义所有的appender-->
 	<Appenders>
+	    <!--这个输出控制台的配置-->
 		<Console name="Console" target="SYSTEM_OUT">
 			<!-- %d{HH:mm:ss.SSS} 表示输出到毫秒的时间 
 			     %t输出当前线程名称 
@@ -12,8 +14,18 @@
 				 %L 输出行号 
 				 %M 输出所在方法名 
 				 %l 输出语句所在的行数, 包括类名、方法名、文件名、行数 -->
+		    <!-- 这个是输出日志的格式 -->
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
 		</Console>
+		
+		<!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，适合临时测试用-->
+        <File name="Error" fileName="logs/error.log" append="false">
+          <!--文件只记录level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+          <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+          <PatternLayout charset="UTF-8" pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+        
+        
 		 <!-- RollingRandomAccessFile Appender  
 		      Rolling的意思是当满足一定条件后，就重命名原日志文件用于备份，并从新生成一个新的日志文件 
 		      fileName：指定当前日志文件的位置和文件名称
@@ -21,10 +33,11 @@
 		      SizeBasedTriggeringPolicy：指定当文件体积大于size指定的值时，触发Rolling
 		      DefaultRolloverStrategy：指定最多保存的文件个数 
 		 -->
-		 <RollingRandomAccessFile name="MyFile"  
-            fileName="logs/log-%d{yyyy-MM-dd}.log"  
+		 <!--这个会打印出所有的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+		 <RollingRandomAccessFile name="MyFile"
+            fileName="logs/log-%d{yyyy-MM-dd}.log"
             filePattern="${LOG_HOME}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd HH-mm}-%i.log">  
-            <PatternLayout  
+            <PatternLayout
                 pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />  
             <Policies>  
                 <!-- 这个配置需要和filePattern结合使用，
@@ -39,7 +52,7 @@
         </RollingRandomAccessFile>   
 	</Appenders>
 	<Loggers>
-	    <Logger name="mylog" level="trace" additivity="false">  
+	    <Logger name="mylog" level="trace" additivity="true">  
             <AppenderRef ref="Console" />  
 	    </Logger>
 		<Root level="error">

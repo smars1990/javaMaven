@@ -17,9 +17,9 @@ import org.apache.logging.log4j.Logger;
  */
 public class Log4j2Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
-		Logger logger = LogManager.getLogger("mylog");
+		Logger logger = LogManager.getLogger(Log4j2Test.class.getName());
 		for (int i = 0; i < 50000; i++) {
 			logger.trace("trace level");
 			logger.debug("debug level");
@@ -27,10 +27,8 @@ public class Log4j2Test {
 			logger.warn("warn level");
 			logger.error("error level");
 			logger.fatal("fatal level");
-		}
-		try {
-			Thread.sleep(1000 * 61);
-		} catch (InterruptedException e) {
+			
+			Thread.sleep(1000 * 2);
 		}
 
 		logger.trace("trace level");
