@@ -8,49 +8,42 @@ package com.application.thread;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.logging.log4j.core.util.SystemNanoClock;
-
 
 /**
  * Thread Pool 线程池测试
  * 
  * @author $Author: liuyunpeng $
- * @version $Revision: 1.0 $
+ * @version $Revision: 1.0 $	
  */
 public class ThreadPoolDemo {
 
-	 public static void main(String[] args) {
-	
+	public static void main(String[] args) {
 
-		 
-//		 ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(2, 3, 10, TimeUnit.MILLISECONDS, 
-//				 new SynchronousQueue<Runnable>(),
-//				 Executors.defaultThreadFactory(),
-//				 new ThreadPoolExecutor.CallerRunsPolicy()); 
-		 
-	
-		 ScheduledThreadPoolExecutor  poolExecutor = new ScheduledThreadPoolExecutor(3,Executors.defaultThreadFactory());
-		 ScheduledExecutorService executorService  = Executors.newScheduledThreadPool(3);
-		 executorService.scheduleAtFixedRate(new Runnable() {
-			
+		// 任务定时器
+		getScheduledThreadPool(1, TimeUnit.MINUTES);
+
+	}
+
+	/**
+	 * 任务定时器执行时间
+	 * 
+	 * @param minutesNum
+	 *            int对象为时间分
+	 * @param minutes
+	 *            TimeUnit对象为时间类型
+	 */
+	public static void getScheduledThreadPool(int minutesNum, TimeUnit minutes) {
+		ScheduledExecutorService executorService = Executors.newScheduledThreadPool(3);
+		executorService.scheduleAtFixedRate(new Runnable() {
+
 			@Override
 			public void run() {
-				System.out.println("执行时间："+ LocalDateTime.now());
+				System.out.println("执行时间：" + LocalDateTime.now());
 			}
-			
-		}, 0, 1* 1000, TimeUnit.MILLISECONDS);
-		 
-	
-	 }
-	 
-	 
-	 
+
+		}, 0, minutesNum, minutes);
+	}
+
 }

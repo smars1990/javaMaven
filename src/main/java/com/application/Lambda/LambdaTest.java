@@ -18,7 +18,9 @@ import java.util.Arrays;
 public class LambdaTest {
 
 	 public static void main(String[] args) {
-         Arrays.asList( "a" , "b" , "c" ,"d" ).forEach(e -> System.out.println(e));
+         
+		 Arrays.asList( "a" , "b" , "c" ,"d" ).forEach(e -> System.out.println(e));
+         
 	 }
 	 
 }

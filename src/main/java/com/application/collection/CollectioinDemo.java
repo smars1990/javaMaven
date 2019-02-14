@@ -21,8 +21,5 @@ public class CollectioinDemo {
 		
 		System.out.println(map);
 		System.out.println(treeMap);
-		
-		
-		
 	}
 }

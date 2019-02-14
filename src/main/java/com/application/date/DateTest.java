@@ -53,15 +53,14 @@ public class DateTest {
 		// getCurrentYearFirstDayAndLastDay();
 
 		// System.out.println(getNowDate());
-		// LocalDateTime localDate = LocalDateTime.;
+	     LocalDateTime localDate = LocalDateTime.now();
 		// System.out.println( localDate.with(DayOfWeek.MONDAY) );
 
 		// 在国内的话，一般默认locale就是CHINA, 可以不指定
-		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-w
-		// E").withLocale(Locale.CHINESE);
-		// DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-w e");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-w E").withLocale(Locale.CHINESE);
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-w e");
 
-		// System.out.println(localDate.minusWeeks(1).getDayOfWeek().getValue());
+		System.out.println(localDate.minusWeeks(1).getDayOfWeek().getValue());
 
 		/*
 		 * DateFormat dateFormat =
@@ -124,11 +123,9 @@ public class DateTest {
 		//
 		// System.out.println(weekFristDay +":"+weekFristDay1 +":"+weekEndDay);
 
+		// 根据 年份-周次获取 周次开始和结束时间范围
 		// System.out.println( parseWithISOWeekFields("2019-52", DayOfWeek.MONDAY) );
 		// System.out.println( parseWithISOWeekFields("2018-1", DayOfWeek.SUNDAY) );
-
-		// LocalDate localDate = LocalDate.of(2018, 12, 31);
-		// LocalDate localDate = LocalDate.of(2019, 01, 01);
 
 		// 获取周次
 		// getCurrentWeeks();
@@ -137,11 +134,35 @@ public class DateTest {
 		// LocalDate localDate1 = LocalDate.of(2018, 01, 29);
 
 		// 获取Period 、ChronoUnit 、Duration 三者之间的区别
-		getDay1AndDay2Poor();
+	    //getDay1AndDay2Poor();
 
 		// 获取周次
-		getCurrDayWeeks();
+		//getCurrDayWeeks();
+		
+	    // 对日期进行对比    
+		compareDate("2019-01-11","2019-01-11");
+		
+		
+	}
 
+	/**
+	 * 对日期进行对比
+	 * @param string 
+	 * @param string2
+	 * @return String 返回时间比对
+	 */
+	private static boolean compareDate(String beginDateStr, String endDateStr) {
+		// 对日期进行对比
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    
+	    LocalDate beginDate = LocalDate.parse(beginDateStr, formatter);
+	    LocalDate endDate = LocalDate.parse(endDateStr, formatter);
+	    
+	    boolean isBigDate = beginDate.isBefore(endDate);
+	    System.out.printf("开始时间："+beginDateStr + ", 和结束时间：" +endDateStr + "， 开始时间大于结束时间："+isBigDate);
+		
+	    // 返回字符串比对
+	    return isBigDate;
 	}
 
 	/**
@@ -167,6 +188,8 @@ public class DateTest {
 		System.out.println("周1：" + WeekFields.SUNDAY_START);
 		System.out.println("周7：" + weekFields);
 		System.out.println("周几：" + localDate.getDayOfWeek().getValue());
+		
+		
 	}
 
 	/**

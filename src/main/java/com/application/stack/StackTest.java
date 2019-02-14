@@ -6,7 +6,6 @@
  */
 package com.application.stack;
 
-import java.util.Arrays;
 import java.util.Stack;
 import java.util.stream.Stream;
 
@@ -28,6 +27,8 @@ public class StackTest {
 			}
 		}
 		
+		
+		
 		long countNew = Stream.of(strArr).filter(w -> w.length() > 3).count();
 //	    System.out.println("count:"+count);
 //	    System.out.println("countNew:"+countNew);
@@ -47,9 +48,10 @@ public class StackTest {
 		stack.pop();
 		stack.remove("123");
 		System.out.println("stack:"+stack);
+		stack.peek();
+		System.out.println("stack:"+stack);
 		
-	   
-		
+		Stream.of(stack).forEach(str -> System.out.println(str));
 		
 	}
 }
