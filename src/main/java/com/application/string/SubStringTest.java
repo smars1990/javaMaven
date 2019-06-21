@@ -1,6 +1,7 @@
 package com.application.string;
 
 import net.sf.json.JSONArray;
+import org.apache.commons.lang.StringUtils;
 
 
 public class SubStringTest {
@@ -51,7 +52,29 @@ public class SubStringTest {
 		str = str.substring(str.lastIndexOf(strArray[0]), str.length()-1);
 		
 		System.out.println(str);
-		
 
+
+
+		//String str1 = getHbaseRowKey("413706170",1560706064);
+		String str1 = getHbaseRowKey("25293",1560666780);
+		System.out.println(str1);
+	}
+
+
+	/**
+	 * 生成hbase数据库rowkey
+	 *
+	 * @param mmsi      String对象为船舶mmsi
+	 * @param timestamp long对象为时间戳
+	 * @return String返回hbase数据库rowkey
+	 */
+	public static String getHbaseRowKey(String mmsi, long timestamp) {
+		//hbase数据库 Rowkey
+		String hbaseRowKey = "";
+		//生成数据库rowKey
+		if (StringUtils.isNotBlank(mmsi)) {
+			hbaseRowKey = new StringBuffer().append(timestamp).reverse() + mmsi;
+		}
+		return hbaseRowKey;
 	}
 }

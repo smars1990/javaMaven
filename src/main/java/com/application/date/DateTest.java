@@ -53,14 +53,14 @@ public class DateTest {
 		// getCurrentYearFirstDayAndLastDay();
 
 		// System.out.println(getNowDate());
-	     LocalDateTime localDate = LocalDateTime.now();
+		//LocalDateTime localDate = LocalDateTime.now();
 		// System.out.println( localDate.with(DayOfWeek.MONDAY) );
 
 		// 在国内的话，一般默认locale就是CHINA, 可以不指定
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-w E").withLocale(Locale.CHINESE);
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-w E").withLocale(Locale.CHINESE);
 		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-w e");
 
-		System.out.println(localDate.minusWeeks(1).getDayOfWeek().getValue());
+		//System.out.println(localDate.minusWeeks(1).getDayOfWeek().getValue());
 
 		/*
 		 * DateFormat dateFormat =
@@ -101,14 +101,18 @@ public class DateTest {
 		// System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd
 		// HH:mm:ss")));
 
-		// DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		// String d1 = "2018-10-22";
-		// LocalDate date = LocalDate.parse(d1, fmt);
+		//DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String d1 = "2019-06-19 19:59:59";
+		System.out.println(sd.parse(d1).getTime()/1000 );
+
+		System.out.println(new Date());
+		//LocalDate date = LocalDate.parse(d1, fmt);
 		//
 		// LocalDate lastWeeklyStartTime = LocalDate.parse("2018-10-22",
 		// DateTimeFormatter.BASIC_ISO_DATE).minusWeeks(1);
 		//
-		// System.out.println("lastWeeklyStartTime:"+date);
+		 //System.out.println("lastWeeklyStartTime:"+date);
 
 		// // 一周的第一天
 		// String weekFristDay = null;
@@ -140,15 +144,16 @@ public class DateTest {
 		//getCurrDayWeeks();
 		
 	    // 对日期进行对比    
-		compareDate("2019-01-11","2019-01-11");
+		//compareDate("2019-01-11","2019-01-11");
 		
 		
 	}
 
+
 	/**
 	 * 对日期进行对比
-	 * @param string 
-	 * @param string2
+	 * @param beginDateStr
+	 * @param endDateStr
 	 * @return String 返回时间比对
 	 */
 	private static boolean compareDate(String beginDateStr, String endDateStr) {

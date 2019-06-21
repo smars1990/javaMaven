@@ -1,4 +1,4 @@
-package com.application.douglas;
+package com.application.algorithm.douglas;
 
 import lombok.Data;
 

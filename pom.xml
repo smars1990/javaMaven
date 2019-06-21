@@ -145,6 +145,37 @@
 		</dependency>
 
 
+		<!-- https://mvnrepository.com/artifact/com.vividsolutions.jts/jtsio
+		<dependency>
+			<groupId>com.vividsolutions.jts</groupId>
+			<artifactId>jtsio</artifactId>
+			<version>1.8</version>
+		</dependency>
+		-->
+
+		<!-- https://mvnrepository.com/artifact/com.vividsolutions/jts -->
+		<dependency>
+			<groupId>com.vividsolutions</groupId>
+			<artifactId>jts</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<!-- 字符串相似性start -->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analyzers</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>com.koolearn.b2b</groupId>
+			<artifactId>ik-analyzer</artifactId>
+			<version>1.0</version>
+		</dependency>
+		-->
+		<!-- 字符串相似性end -->
+
+
     </dependencies>
 	
 </project>

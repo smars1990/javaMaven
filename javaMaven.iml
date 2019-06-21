@@ -158,5 +158,9 @@
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-jobclient:2.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-hdfs:2.5.1" level="project" />
     <orderEntry type="library" name="Maven: commons-daemon:commons-daemon:1.0.13" level="project" />
+    <orderEntry type="library" name="Maven: com.vividsolutions:jts:1.8" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:3.6.2" level="project" />
+    <orderEntry type="library" name="IKAnalyzer2012_u6" level="project" />
   </component>
 </module>

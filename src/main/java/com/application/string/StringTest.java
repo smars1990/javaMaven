@@ -18,13 +18,14 @@ public class StringTest {
       //a和c.intern比较，intern会把c搬到常量池，所以加入第二个重复的值会返回已存在值的索引，返回true
       System.out.println(a == c.intern());*/
 	  
-	  String str = "8";
-	  
+	  String  str = "";
 	  System.out.println("str:"+Integer.parseInt(str));
 	  
       LocalDateTime dateTime = LocalDateTime.now();
       
       System.out.println(dateTime.withHour(00));
+
+
       
   }
 }
