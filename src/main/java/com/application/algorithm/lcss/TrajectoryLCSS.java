@@ -107,18 +107,18 @@ public class TrajectoryLCSS {
     }
 
     public static void main(String[] args) {
-//        Coordinate[] coor1=new Coordinate[5];
-//        coor1[0]=new Coordinate(114.300, 30.1);
-//        coor1[1]=new Coordinate(114.302, 30.101);
-//        coor1[2]=new Coordinate(114.3023, 30.1002);
-//        coor1[3]=new Coordinate(114.30235, 30.1011);
-//        coor1[4]=new Coordinate(114.304, 30.1003);
-//        Coordinate[] coor2=new Coordinate[2];
-//        coor2[0]=new Coordinate(114.301, 30.1002);
-//        coor2[1]=new Coordinate(114.3023, 30.1015);
-//        TrajectoryLCSS lcss=new TrajectoryLCSS(coor1, coor2, 0.001);
-//        Coordinate[] coors = lcss.genLCSS();
-//        System.out.println(lcss.getMatchRatio());
+/*        Coordinate[] coor1=new Coordinate[5];
+        coor1[0]=new Coordinate(114.300, 30.1);
+        coor1[1]=new Coordinate(114.302, 30.101);
+        coor1[2]=new Coordinate(114.3023, 30.1002);
+        coor1[3]=new Coordinate(114.30235, 30.1011);
+        coor1[4]=new Coordinate(114.304, 30.1003);
+        Coordinate[] coor2=new Coordinate[2];
+        coor2[0]=new Coordinate(114.301, 30.1002);
+        coor2[1]=new Coordinate(114.3023, 30.1015);
+        TrajectoryLCSS lcss=new TrajectoryLCSS(coor1, coor2, 0.001);
+        Coordinate[] coors = lcss.genLCSS();
+        System.out.println(lcss.getMatchRatio());*/
 
 
         StringBuilder sb1 = new StringBuilder();
@@ -130,6 +130,7 @@ public class TrajectoryLCSS {
                 " {\"longitude\":118.96588897705,\"latitude\":24.629394531251},\n" +
                 " {\"longitude\":118.89722442627,\"latitude\":24.611541748048},\n" +
                 " {\"longitude\":118.84984588624,\"latitude\":24.592315673829}]");
+
         //readFileByChars("D:\\tomcat\\apache-tomcat-8.5.39\\webapps\\test\\temp_ships_trajectory_dilution1.json",sb1);
         //readFileByChars("D:\\tomcat\\apache-tomcat-8.5.39\\webapps\\test\\keyAreaData1.json",sb1);
         JSONArray jsonArray1 = JSONArray.parseArray(sb1.toString());
@@ -151,6 +152,7 @@ public class TrajectoryLCSS {
                 " {\"longitude\":118.98923492433,\"latitude\":24.580642700195},\n" +
                 " {\"longitude\":118.99884796144,\"latitude\":24.590255737305},\n" +
                 " {\"longitude\":118.9961013794,\"latitude\":24.584762573242}]");
+
         //readFileByChars("D:\\tomcat\\apache-tomcat-8.5.39\\webapps\\test\\keyAreaData2.json",sb2);
         //readFileByChars("D:\\tomcat\\apache-tomcat-8.5.39\\webapps\\test\\json.json",sb2);
         JSONArray jsonArray2 = JSONArray.parseArray(sb2.toString());

@@ -17,7 +17,7 @@ public class LocationTest {
         double longitude = 110.625666;
         double latitude = 18.597227;
 
-        double radius = 5000;
+        double radius = 1000;
 
         //获取720个坐标，坐标稀疏距离为 0.5
         for( double  i = 0; i < 180;){

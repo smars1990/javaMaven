@@ -40,29 +40,7 @@ public class DTWTest {
         for(int i=0;i<Y.length;i++){
             this.Y[i]=Y[i];
         }
-
     }
-
-   /* private void readDataFile() {
-        File file = new File(filePath);
-        listTemp = new ArrayList<String[]>();
-        try{
-            BufferedReader in = new BufferedReader(new FileReader(filePath));
-            String str;
-            String[] strTemp;
-            while((str=in.readLine())!=null){
-
-                strTemp = str.split(" ");
-                listTemp.add(strTemp);
-
-            }
-        }catch(IOException e){
-            e.printStackTrace();
-
-        }
-        //利用listTemp初始化两个带比较的数列
-    }*/
-
 
     public void initXAndY(){
         int i;
@@ -85,8 +63,6 @@ public class DTWTest {
                 minDtw = dtw;
                 minDex = j;
             }
-
-
         }
         /*	System.out.print(minDex);*/
         System.out.print(MessageFormat.format("匹配程度最高的序号为{0}，距离为{1}", minDex,minDtw));
@@ -148,43 +124,43 @@ public class DTWTest {
 //        DTWTest dtwTest = new DTWTest(tempList);
 //        dtwTest.initXAndY();
 
-/*        int[] x={1,2,3,4,5,0};
-        int[] y={2,3,4,5,0,1};
+        double [] x={1.0,2.0,3.0,4.0,5.0,0.0};
+        double[] y={2.0,3.0,4.0,5.0,0.0,1.0};
         DTWTest tool = new DTWTest(x,y);
         System.out.print(tool.getDtwDist());
-*/
 
 
-        ReadFile readFile =  new ReadFile();
 
-        StringBuilder sb1 = new StringBuilder();
-        readFile.readFileByChars("D:\\tomcat\\apache-tomcat-8.5.39\\webapps\\test\\temp_ships_trajectory_dilution1.json",sb1);
-        JSONArray jsonArray1 = JSONArray.parseArray(sb1.toString());
-        int array1Leng = jsonArray1.size();
-
-        StringBuilder sb2 = new StringBuilder();
-        readFile.readFileByChars("D:\\tomcat\\apache-tomcat-8.5.39\\webapps\\test\\temp_ships_trajectory_dilution2.json",sb2);
-        JSONArray jsonArray2 = JSONArray.parseArray(sb2.toString());
-        int array2Leng = jsonArray2.size();
-
-        double[] x = new double[array1Leng+array2Leng];
-        double[] y = new double[array1Leng+array2Leng];
-
-        for(int i = 0; i < jsonArray1.size();i++){
-            JSONObject jsonObject = (JSONObject) jsonArray1.get(i);
-            x[i] = jsonObject.getDouble("longitude");
-            y[i] = jsonObject.getDouble("latitude");
-        }
-
-
-        for(int i = 0; i < jsonArray2.size();i++){
-            JSONObject jsonObject = (JSONObject) jsonArray2.get(i);
-            x[i+array1Leng] = jsonObject.getDouble("longitude");
-            y[i+array1Leng] = jsonObject.getDouble("latitude");
-        }
-
-        DTWTest tool = new DTWTest(x,y);
-        System.out.print(tool.getDtwDist());
+//        ReadFile readFile =  new ReadFile();
+//
+//        StringBuilder sb1 = new StringBuilder();
+//        readFile.readFileByChars("D:\\tomcat\\apache-tomcat-8.5.39\\webapps\\test\\temp_ships_trajectory_dilution1.json",sb1);
+//        JSONArray jsonArray1 = JSONArray.parseArray(sb1.toString());
+//        int array1Leng = jsonArray1.size();
+//
+//        StringBuilder sb2 = new StringBuilder();
+//        readFile.readFileByChars("D:\\tomcat\\apache-tomcat-8.5.39\\webapps\\test\\temp_ships_trajectory_dilution2.json",sb2);
+//        JSONArray jsonArray2 = JSONArray.parseArray(sb2.toString());
+//        int array2Leng = jsonArray2.size();
+//
+//        double[] x = new double[array1Leng+array2Leng];
+//        double[] y = new double[array1Leng+array2Leng];
+//
+//        for(int i = 0; i < jsonArray1.size();i++){
+//            JSONObject jsonObject = (JSONObject) jsonArray1.get(i);
+//            x[i] = jsonObject.getDouble("longitude");
+//            y[i] = jsonObject.getDouble("latitude");
+//        }
+//
+//
+//        for(int i = 0; i < jsonArray2.size();i++){
+//            JSONObject jsonObject = (JSONObject) jsonArray2.get(i);
+//            x[i+array1Leng] = jsonObject.getDouble("longitude");
+//            y[i+array1Leng] = jsonObject.getDouble("latitude");
+//        }
+//
+//        DTWTest tool = new DTWTest(x,y);
+//        System.out.print(tool.getDtwDist());
 
     }
 }
